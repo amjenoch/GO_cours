@@ -46,10 +46,28 @@ package main
 
 import "fmt"
 
+func sum(d []int, e chan int) {
+	step := 0 
 
+	for i:= 0; i<len(d);i++{
+		 step += i
+	}
+	e <- step
+}
 
 
 
 func main() {
+	s :=  []int{7,8,9,44,2}
 
+	c := make(chan int)
+
+	go sum(s[len(s)/2:],c)
+	go sum(s[:len(s)/2],c)
+
+	x,y := <- c, <- c 
+
+	fmt.Println(x,y,x-y)
+
+	
 }

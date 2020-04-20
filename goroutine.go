@@ -13,13 +13,6 @@ func f(depuis string)  {
 	}
 }
 
-func say(s string) {
-	for i := 0; i < 5; i++ {
-		time.Sleep(100 * time.Millisecond)
-		fmt.Println(s)
-	}
-}
-
 
 func main() {
 
@@ -28,11 +21,10 @@ func main() {
 
 	go f("Bonne nuit") 
 
-	go say("world")
-	say("hello")
+	go func(msg string) {
+		fmt.Println(msg)
+	}("Je veux t'aimer")
 
 	time.Sleep(time.Second)
     fmt.Println("done")
 }
-
-
