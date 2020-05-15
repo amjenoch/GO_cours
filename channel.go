@@ -1,9 +1,9 @@
-/*package main 
+package main 
 
 import (
 	"fmt"
 )
-
+/*
 func main() {
 	messages := make(chan string)
 
@@ -42,7 +42,7 @@ func main() {
 
 
 
-package main
+/*package main
 
 import "fmt"
 
@@ -70,4 +70,17 @@ func main() {
 	fmt.Println(x,y,x-y)
 
 	
+}*/
+
+
+func main() {
+	c:= make(chan int)
+
+	go func() {
+		c <- 42
+	}()
+
+	x := <- c 
+
+	fmt.Println(x)
 }
